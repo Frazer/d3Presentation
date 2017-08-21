@@ -1,0 +1,12 @@
+<pre>
+// Create an in-memory-only element of type 'kivu'
+// this holds the d3 representation of all of the data
+var detachedContainer = document.createElement("kivu");
+
+// Create a d3 selection for the detached container. We won't
+// actually be attaching it to the DOM.
+this.dataContainer = d3.select(detachedContainer);
+
+this.nodesDataBinding = kgx.dataContainer.selectAll("node");
+this.linksDataBinding = kgx.dataContainer.selectAll("link");
+</pre>
