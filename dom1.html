@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>D3 Dom manipulator</title>
+    <style>
+    	body{background-image: url('https://c1.staticflickr.com/1/98/245744537_9b2401b807_b.jpg');
+    		background-repeat: no-repeat;
+    		background-attachment: fixed;
+    		background-position: center;  
+	        -webkit-background-size: cover;
+	        -moz-background-size: cover;
+	        -o-background-size: cover;
+	        background-size: cover;
+		}
+    	.mainContainer{ position: relative; margin: auto; width:80vw; margin-top:5vh;  5vh; height:80vh;
+    		border:2px solid black;
+    		border-radius: 1px;
+    		background: white;
+    		padding: 10px;
+    	}
+    	.logoContainer{width:10%; float:right;}
+    	.mainImage{ width:100%; }
+    	.mainHeading{ text-align: center;}
+    	#headingPre{ text-align: center;}
+    	.highlightCode{color: blue;}
+
+
+    	.leftSubtext{position: absolute; left: 20px; bottom:10px; width:40%;}
+    	.rightSubtext{position: absolute; right: 20px; max-width: 40%; bottom:10px;}
+
+    </style>
+     <script src="https://d3js.org/d3.v4.min.js"></script>
+  </head>
+  <body>
+
+  	<div class="mainContainer">
+  	  <div class="logoContainer">
+  		<img class="mainImage" src="https://avatars3.githubusercontent.com/u/1562726?v=4&s=400"/>
+  		<img class="mainImage" src="kivu-logo-black-light.svg"/>
+  	  </div>
+<h1 id="intro" class="mainHeading">You are awesome</h1>
+
+<script>
+var header =  d3.select("h1#intro");
+</script>
+
+<div id="headingPre">
+<pre>&lt;h1 id="intro"&gt;You are awesome&lt;/h1&gt;
+
+&lt;script&gt;<span class="highlightCode">var header =  d3.select("h1#intro");</span>&lt;/script&gt;
+
+</pre></div>
+
+<button onClick="header.text('We are awesome')">We are awesome</button>
+onClick="<span class="highlightCode">header.text('We are awesome')</span>"
+<br><br>
+<button onClick='header.style("font-size", "50px")'>Big</button>
+onClick='<span class="highlightCode">header.style("font-size", "50px")</span>'
+<button onClick='header.style("font-size", "20px")'>Small</button>
+<br><br>
+<button onClick='header.style("color", "red")'>Red</button>
+onClick='<span class="highlightCode">header.style("color", "red")</span>'
+<button onClick='header.style("color", "black")'>Black</button>
+<br><br>
+<script src="jscolor.js"></script>
+JsColor: <input class="jscolor {onFineChange:'update(this)'}" value="000"> <a href="https://frazer.github.io/d3-profile/rainbow.html">🌈</a>
+<script>
+function update(jscolor) {
+    header.style("color", '#' + jscolor);
+}
+</script>
+<pre>
+&lt;script src="jscolor.js"&gt;&lt;/script&gt;
+JsColor: &lt;input class="jscolor {onFineChange:'update(this)'}" value="000"&gt;
+&lt;script&gt;
+function update(jscolor) {
+    header.style("color", '#' + jscolor);
+}
+&lt;/script&gt;
+</pre>
+
+		<div class="leftSubtext">(:</div>
+  		<div class="rightSubtext"><a href="dom2.html">→</a></div>
+  		<div style="clear: both; padding-bottom:10px;"></div>
+
+  	</div>
+  
+  </body>
+</html>
+

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>D3 Dom manipulator</title>
+    <link rel="stylesheet" href="barStyle.css" ></link>
+    <style>
+      body{background-image: url('https://c1.staticflickr.com/1/98/245744537_9b2401b807_b.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;  
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+    }
+      .mainContainer{ position: relative; margin: auto; width:80vw; margin-top:5vh;  5vh; height:80vh;
+        border:2px solid black;
+        border-radius: 1px;
+        background: white;
+        padding: 10px;
+      }
+      .logoContainer{width:10%; float:right;}
+      .mainImage{ width:100%; }
+      .mainHeading{ text-align: center; color:red;}
+      #headingPre{ text-align: center;}
+      .highlightCode{color: blue;}
+      .codeDisplay, .d3Display{width:49%; height:70%; 
+        background-color: orange;
+        border:1px black solid; float:left; 
+        padding:10px; 
+        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+        box-sizing: border-box;
+      }
+      .d3Display p{padding-left: 10px}
+      .codeDisplay{float:right;}
+
+      .leftSubtext{position: absolute; left: 20px; bottom:10px; width:40%;}
+      .rightSubtext{position: absolute; right: 20px; max-width: 40%; bottom:10px;}
+
+    </style>
+     <script src="https://d3js.org/d3.v4.min.js"></script>
+  </head>
+  <body>
+
+    <div class="mainContainer">
+      <div class="logoContainer">
+      <img class="mainImage" src="https://avatars3.githubusercontent.com/u/1562726?v=4&s=400"/>
+      <img class="mainImage" src="kivu-logo-black-light.svg"/>
+      </div>
+<h1 id="intro" class="mainHeading">We are awesome</h1>
+<br><br><br>
+<div class="d3Display"><h1 style="margin:0">d3Display</h1>
+  <div class="chart"></div>
+</div>
+
+<div class="codeDisplay">
+<pre>
+var demo = d3.select('.d3Display')
+var data = [<input id="data" value="4,30,8,3,15,26,23,11,42"/>];
+function draw() {
+  <span title='var data = document.getElementById("data").value.split(",").map(function(item) {return parseInt(item, 10)});'>...</span>
+  let x = d3.scaleLinear()<span title=".domain([0, d3.max(data)])
+.range([0, parseFloat(demo.style('width'))*0.95]);">...</span>
+  d3.select(".chart").selectAll("div").remove();
+  d3.select(".chart")
+  .selectAll("div")
+    .data(data)
+  .enter().append("div")
+    .style(<span title='.style("width", function(d) { return x(d) + "px"; })
+    .style("height", function(d) { return Math.sqrt(x(d))+5 + "px"; })'>...</span>)
+    .text(function(d) { return d; });
+}
+</pre>
+<button onClick="draw()">draw()</button>
+
+
+</div>
+<script>
+var demo = d3.select('.d3Display')
+
+function draw() {
+  var data = document.getElementById("data").value.split(",").map(function(item) {return parseInt(item, 10)});
+  let x = d3.scaleLinear()
+    .domain([0, d3.max(data)])
+    .range([0, parseFloat(demo.style('width'))*0.95]);
+  d3.select(".chart").selectAll("div").remove();  //  remove all bars ready fr redraw
+  d3.select(".chart")
+  .selectAll("div")
+    .data(data)
+  .enter().append("div")
+    .style("width", function(d) { return x(d) + "px"; })
+    .style("height", function(d) { return Math.sqrt(x(d))+5 + "px"; })
+    .text(function(d) { return d; });
+}
+
+</script>
+    <div class="leftSubtext"><a href="dom2.html">←</a></div>
+      <div class="rightSubtext">:)</div>
+      <div style="clear: both; padding-bottom:10px;"></div>
+
+    </div>
+  
+  </body>
+</html>
+
